@@ -2,38 +2,39 @@
 #include <string>
 #include <list>
 
+
 using namespace std;
 
-//ìœ ì € ì •ë³´ì— ê´€í•œ í´ë˜ìŠ¤
+
+//À¯Àú Á¤º¸¿¡ °üÇÑ Å¬·¡½º
 class UserInfo{
     private: 
-    //ìœ ì € ì•„ì´ë””
+    //À¯Àú ¾ÆÀÌµğ
     string UserID;
-    //ìœ ì € ë¹„ë°€ë²ˆí˜¸
+    //À¯Àú ºñ¹Ğ¹øÈ£
     string Password;
-    //ìœ ì €ê°€ ì‘ì„±í•œ ê²Œì‹œê¸€ ëª©ë¡
+    //À¯Àú°¡ ÀÛ¼ºÇÑ °Ô½Ã±Û ¸ñ·Ï
     list<string> PostInfo;
 
     public:
-    //ìœ ì € ì•„ì´ë””ë¥¼ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
+    //À¯Àú ¾ÆÀÌµğ¸¦ °¡Á®¿À´Â ÇÔ¼ö
     string GetUserID(){
         return UserID;
     }
-     //ìœ ì € ì•„ì´ë””ë¥¼ ë‹¤ë¥¸ ê°’ìœ¼ë¡œ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
+     //À¯Àú ¾ÆÀÌµğ¸¦ ´Ù¸¥ °ªÀ¸·Î ¼³Á¤ÇÏ´Â ÇÔ¼ö
     string SetUserID(string str){
         UserID = str;
         return UserID;
     }
 
-    //ìœ ì € ë¹„ë°€ë²ˆí˜¸ë¥¼ ê°€ì ¸ì˜¤ëŠ” í•¨ìˆ˜
+    //À¯Àú ºñ¹Ğ¹øÈ£¸¦ °¡Á®¿À´Â ÇÔ¼ö
      string GetPassword(){
         return Password;
     }
 
-     //ìœ ì € ë¹„ë°€ë²ˆí˜¸ë¥¼ ë‹¤ë¥¸ ê°’ìœ¼ë¡œ ì„¤ì •í•˜ëŠ” í•¨ìˆ˜
+     //À¯Àú ºñ¹Ğ¹øÈ£¸¦ ´Ù¸¥ °ªÀ¸·Î ¼³Á¤ÇÏ´Â ÇÔ¼ö
     string SetPassword(string str){
         Password = str;
         return Password;
     }
-
 };

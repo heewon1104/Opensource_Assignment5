@@ -1,17 +1,9 @@
-#include <iostream>
-#include "UserInfo.cpp"
+#include "LoginPage.cpp"
 
 using namespace std;
 
 int main() {
-    UserInfo User = UserInfo();
-
-    User.SetUserID("julian3306");
-    User.SetPassword("1234");
-
-
-    cout << "ID : " << User.GetUserID() << endl;
-    cout << "Password : " <<User.GetPassword() << endl;
+    RunLogin();
 
     return 0;
 }
