@@ -79,6 +79,30 @@ void AddUser(list<UserInfo>& list){
     cout << endl << "회원가입 되었습니다!" << endl;
 } 
 
+void Login(list<UserInfo>& list){
+    string id, password;
+    bool logincheck = false;
+    
+
+    while(!logincheck){
+        cout << endl << "아이디를 입력해주세요" << endl;
+        cin >> id;
+
+        cout << endl << "비밀번호를 입력해주세요" << endl;
+        cin >> password;
+
+        for(auto itr : list){
+            if(itr.GetUserID() == id && itr.GetPassword() == password)
+                logincheck = true;
+        }
+        if(logincheck == true)
+            cout << endl << "로그인 되었습니다!" << endl;
+        else
+            cout << endl << "아이디나 비밀번호를 잘못 입력하였습니다 다시 입력 해주세요" << endl;
+    }
+}
+
+
 void CheakCommand(list<UserInfo>& userlist){
     bool exitcheck = false;
     int command;
@@ -95,6 +119,7 @@ void CheakCommand(list<UserInfo>& userlist){
                 AddUser(userlist);
                 break;
             case 2:
+                Login(userlist);
                 break;
             case 3:
                 break;
