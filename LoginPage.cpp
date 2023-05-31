@@ -102,6 +102,25 @@ void Login(list<UserInfo>& list){
     }
 }
 
+void SearchPassword(list<UserInfo>& list){
+    string id, password = "";
+    bool searchcheck = false;
+    
+
+    cout << endl << "찾으려는 계정의 아이디를 입력해주세요" << endl;
+    cin >> id;
+
+    for(auto itr : list){
+        if(itr.GetUserID() == id)
+            password = itr.GetPassword();
+    }
+
+    if(password.length() == 0)
+        cout << endl << "존재하지 않는 계정입니다" << endl;
+    else
+        cout << endl << "해당 계정의 비밀번호는 "  << password << " 입니다 "<< endl;
+    
+}
 
 void CheakCommand(list<UserInfo>& userlist){
     bool exitcheck = false;
@@ -122,6 +141,7 @@ void CheakCommand(list<UserInfo>& userlist){
                 Login(userlist);
                 break;
             case 3:
+                SearchPassword(userlist);
                 break;
 
             case 0:
