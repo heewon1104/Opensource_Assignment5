@@ -42,11 +42,11 @@ class PostingInfo{
     }
 
     string Getcontents(){
-        return title;
+        return contents;
     }
 
     string Setcontents(string str){
-        title = str;
-        return title;
+        contents = str;
+        return contents;
     }
 };

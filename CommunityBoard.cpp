@@ -13,35 +13,73 @@ void PrintBoard(){
     cout << endl << "*****************************" << endl << endl;
 }
 
-void CheckPostings(list<PostingInfo> board){
-    for(auto itr : board){
-        cout << endl << "*****************************" << endl << endl;
-        cout << endl << itr.GetpostingID() << ". "<< "제목 : " << itr.Gettitle() << endl << endl;
-        cout << endl << "내용 : " << endl << itr.Getcontents() << endl << endl;
-        cout << endl << "*****************************" << endl << endl;
+void CheckPostings(list<PostingInfo> board, int size){
+    if(size == 0){
+        cout << endl << "게시글이 없습니다!" << endl << endl;
     }
+
+    else{
+        for(auto itr : board){
+            cout << endl << "*****************************************************" << endl << endl;
+            cout << endl << itr.GetpostingID() << ". "<< "제목 : " << itr.Gettitle() << endl << endl;
+            cout << endl << "내용 : " << endl << itr.Getcontents() << endl << endl;
+            cout << endl << "*****************************************************" << endl << endl;
+        }
+    }
+}
+void NoticeAboutPosting(){
+    cout << endl << "** 주의사항 **" << endl << endl;
+
+    cout << "제목을 전부 쓰고나서 엔터를 입력하면 엔터전까지의 내용들이 입력됩니다" << endl;
+    cout << "내용을 전부 쓰고나서 엔터를 입력하면 엔터전까지의 내용들이 입력됩니다" << endl << endl;
+}
+
+void AddPostings(UserInfo& user, list<PostingInfo>& board, int size){
+    PostingInfo tmp;
+
+    string writetitle, writecontent;
+
+    NoticeAboutPosting();
+
+    cout << "제목을 입력하세요" << endl << endl;
+    getline(cin, writetitle);   
+
+    cout << "내용을 입력하세요" << endl << endl;
+    getline(cin, writecontent);   
+
+    tmp.Settitle(writetitle);
+    tmp.Setcontents(writecontent);
+    tmp.SetUserID(user.GetUserID());
+    tmp.SetpostingID(size + 1);
+
+    user.AddPostInfo(size + 1);
+
+    board.push_back(tmp);
 }
 
 void board(){
-    list<UserInfo> userlist;
+    UserInfo user;
     list<PostingInfo> board;
-
+    
     bool exitcheck = false;
     int command;
+    int size;
 
     while (!exitcheck)
     {  
         PrintBoard();
 
-            cin >> command;
+        cin >> command;
+        size = board.size();
 
         switch (command)
         {
             case 1:
-                CheckPostings(board);
+                CheckPostings(board, size);
                 break;
             case 2:
-
+                getchar();
+                AddPostings(user, board, size);
                 break;
 
             case 0:
