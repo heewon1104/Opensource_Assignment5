@@ -1,6 +1,5 @@
-#include "UserInfo.cpp"
+#include "UserInfo.h"
 
-using namespace std;
 void GuidePrint(){
     cout << endl << "*************************************************" << endl << endl;
 
@@ -120,43 +119,4 @@ void SearchPassword(list<UserInfo>& list){
     else
         cout << endl << "해당 계정의 비밀번호는 "  << password << " 입니다 "<< endl;
     
-}
-
-void CheakCommand(list<UserInfo>& userlist){
-    bool exitcheck = false;
-    int command;
-
-    while (!exitcheck)
-    {   
-        GuidePrint();
-
-        cin >> command;
-
-        switch (command)
-        {
-            case 1:
-                AddUser(userlist);
-                break;
-            case 2:
-                Login(userlist);
-                break;
-            case 3:
-                SearchPassword(userlist);
-                break;
-
-            case 0:
-                exitcheck = true;
-                cout << endl << "프로그램을 종료합니다" << endl << endl;
-                break;
-            default:
-                break;
-        }
-    }
-}
-
-
-void RunLogin(){
-    list<UserInfo> userlist;
-
-    CheakCommand(userlist);
 }
