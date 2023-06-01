@@ -1,3 +1,4 @@
+#include "CommunityBoard.cpp"
 #include "LoginFunction.cpp"
 
 int main(){

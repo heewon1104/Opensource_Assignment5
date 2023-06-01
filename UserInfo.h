@@ -12,7 +12,7 @@ class UserInfo{
     //유저 비밀번호
     string Password;
     //유저가 작성한 게시글 목록
-    list<string> PostInfo;
+    list<int> PostInfo;
 
     public:
     //유저 아이디를 가져오는 함수
@@ -34,5 +34,13 @@ class UserInfo{
     string SetPassword(string str){
         Password = str;
         return Password;
+    }
+
+    void AddPostInfo(int postid){
+        PostInfo.push_back(postid);
+    }
+    
+    void DeletePostInfo(int postid){
+        PostInfo.remove(postid);
     }
 };
