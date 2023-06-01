@@ -3,7 +3,7 @@
 
 int main(){
     list<UserInfo> userlist;
-    bool exitcheck = false;
+    bool exitcheck = false, quitcmd=false;
     int logincommand;
 
     UserInfo tmpuser;
@@ -16,6 +16,7 @@ int main(){
         //로그인 메인페이지 출력
         GuidePrint();
 
+        quitcmd = false;
         //커맨드 입력
         cin >> logincommand;
 
@@ -27,8 +28,9 @@ int main(){
                 break;
             //2 입력시 로그인 후 게시판 실행 
             case 2:
-                tmpuser = Login(userlist);
-                startboard(tmpuser, postingboard, boardsize);
+                tmpuser = Login(userlist, quitcmd);
+                if(quitcmd == false)
+                    startboard(tmpuser, postingboard, boardsize);
                 break;
             //3 입력시 비밀번호 찾기
             case 3:

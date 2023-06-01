@@ -1,3 +1,4 @@
+#pragma once
 #include "UserInfo.h"
 
 //처음 로그인 했을때 메인회면을 띄워주는 함수
@@ -48,8 +49,13 @@ void AddUser(list<UserInfo>& list){
 
         //아이디와 비밀번호 입력
         cout << endl << "사용할 아이디를 입력해주세요" << endl;
+        cout << "처음 화면으로 나가려면 ~ 을 입력해주세요" << endl << endl;
         cin >> id;
 
+        //처음 화면으로 되돌아가려면 ~ 입력
+        if(id == "~")
+            return;
+        
         cout << endl << "사용할 비밀번호를 입력해주세요" << endl;
         cin >> password;
 
@@ -97,7 +103,7 @@ void AddUser(list<UserInfo>& list){
 } 
 
 //로그인을 도와주는 함수
-UserInfo Login(list<UserInfo>& list){
+UserInfo Login(list<UserInfo>& list, bool& quitcmd){
     UserInfo searchuser;
     string id, password;
     bool logincheck = false;
@@ -106,8 +112,15 @@ UserInfo Login(list<UserInfo>& list){
     while(!logincheck){
         //아이디와 비밀번호 입력
         cout << endl << "아이디를 입력해주세요" << endl;
+
+        //처음 화면으로 되돌아가려면 ~ 입력
+        cout << "처음 화면으로 나가려면 ~ 을 입력해주세요" << endl << endl;
         cin >> id;
 
+        if(id == "~"){
+            quitcmd = true;
+            return searchuser;
+        }
         cout << endl << "비밀번호를 입력해주세요" << endl;
         cin >> password;
 

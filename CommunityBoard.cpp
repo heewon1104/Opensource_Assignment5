@@ -1,3 +1,4 @@
+#pragma once
 #include "UserInfo.h"
 #include "PostingInfo.h"
 
