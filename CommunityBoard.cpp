@@ -57,29 +57,25 @@ void AddPostings(UserInfo& user, list<PostingInfo>& board, int size){
     board.push_back(tmp);
 }
 
-void board(){
-    UserInfo user;
-    list<PostingInfo> board;
-    
+void startboard(UserInfo& user, list<PostingInfo>& postingboard, int& boardsize){
     bool exitcheck = false;
     int command;
-    int size;
 
     while (!exitcheck)
     {  
         PrintBoard();
 
         cin >> command;
-        size = board.size();
+        boardsize = postingboard.size();
 
         switch (command)
         {
             case 1:
-                CheckPostings(board, size);
+                CheckPostings(postingboard, boardsize);
                 break;
             case 2:
                 getchar();
-                AddPostings(user, board, size);
+                AddPostings(user, postingboard, boardsize);
                 break;
 
             case 0:

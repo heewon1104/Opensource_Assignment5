@@ -78,7 +78,8 @@ void AddUser(list<UserInfo>& list){
     cout << endl << "회원가입 되었습니다!" << endl;
 } 
 
-void Login(list<UserInfo>& list){
+UserInfo Login(list<UserInfo>& list){
+    UserInfo searchuser;
     string id, password;
     bool logincheck = false;
     
@@ -91,14 +92,18 @@ void Login(list<UserInfo>& list){
         cin >> password;
 
         for(auto itr : list){
-            if(itr.GetUserID() == id && itr.GetPassword() == password)
+            if(itr.GetUserID() == id && itr.GetPassword() == password){
                 logincheck = true;
+                searchuser = itr;
+            }
         }
         if(logincheck == true)
             cout << endl << "로그인 되었습니다!" << endl;
         else
             cout << endl << "아이디나 비밀번호를 잘못 입력하였습니다 다시 입력 해주세요" << endl;
     }
+
+    return searchuser;
 }
 
 void SearchPassword(list<UserInfo>& list){

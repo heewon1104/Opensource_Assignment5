@@ -4,21 +4,26 @@
 int main(){
     list<UserInfo> userlist;
     bool exitcheck = false;
-    int command;
+    int logincommand;
+
+    UserInfo tmpuser;
+    list<PostingInfo> postingboard; 
+    int boardsize = 0;
 
     while (!exitcheck)
     {   
         GuidePrint();
 
-        cin >> command;
+        cin >> logincommand;
 
-        switch (command)
+        switch (logincommand)
         {
             case 1:
                 AddUser(userlist);
                 break;
             case 2:
-                Login(userlist);
+                tmpuser = Login(userlist);
+                startboard(tmpuser, postingboard, boardsize);
                 break;
             case 3:
                 SearchPassword(userlist);
