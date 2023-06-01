@@ -34,7 +34,7 @@ int main(){
             case 3:
                 SearchPassword(userlist);
                 break;
-
+            //4 입력시 비밀번호 변경
             case 4:
                 ChangePassword(userlist);
                 break;

@@ -29,7 +29,7 @@ class UserInfo{
         return Password;
     }
 
-     //유저 비밀번호를 다른 값으로 설정하는 함수
+    //유저 비밀번호를 다른 값으로 설정하는 함수
     string SetPassword(string str){
         Password = str;
         return Password;

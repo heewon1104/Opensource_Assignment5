@@ -154,6 +154,7 @@ void SearchPassword(list<UserInfo>& list){
     
 }
 
+//비밀번호 바꿔주는 함수
 void ChangePassword(list<UserInfo>& userlist){
     string id, password;
     bool lettercheck = true;
@@ -161,34 +162,42 @@ void ChangePassword(list<UserInfo>& userlist){
     UserInfo* user = nullptr;
     bool usercheck = false;
 
+    //아이디 입력
     cout << endl << "아이디를 입력해주세요" << endl;
     cin >> id;
 
+    // 해당 아이디가 존재하는지 확인
     for (auto& itr : userlist) {
         if (itr.GetUserID() == id) {
             user = &itr;
             usercheck = true;
-            break; // 아이디가 일치하는 경우 반복문 종료
+            break; 
         }
     }
 
+    //아이디가 없으면 종료
     if (usercheck == false) {
         cout << endl << "존재하지 않는 아이디입니다" << endl;
         return;
     }
 
+    //아이디가 존재하면 비밀번호 입력
     cout << endl << "변경할 비밀번호를 입력해주세요" << endl;
     cin >> password;
 
+    //아이디가 영어, 숫자로만 이루어져 있는지 확인
     for (int i = 0; i < password.length(); i++) {
         if (isalpha(password[i]) == 0 && isdigit(password[i]) == false)
             lettercheck = false;
     }
 
+    //영어 숫자가 아닌 문자가 있으면 변경하지 않고 종료
     if (lettercheck == false) {
         cout << endl << "비밀번호는 공백없이 숫자나 영어로만 입력되어야 합니다!" << endl;
         cout << endl << "비밀번호가 변경되지 않았습니다" << endl;
     }
+
+    //영어 숫자로만 이루어져 있으면 비밀번호 변경
     else {
         user->SetPassword(password);
         cout << endl << "비밀번호가 변경되었습니다" << endl;

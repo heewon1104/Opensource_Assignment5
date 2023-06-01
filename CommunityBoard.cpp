@@ -65,6 +65,7 @@ void AddPostings(UserInfo& user, list<PostingInfo>& board, int size){
     board.push_back(tmp);
 }
 
+//개인화면 출력 함수
 void UserInfomationBoard(UserInfo& user){
     cout << endl << "*****************************" << endl << endl;
 
@@ -77,6 +78,7 @@ void UserInfomationBoard(UserInfo& user){
     cout << endl << "*****************************" << endl << endl;
 }
 
+// 아이디 비밀번호 출력 함수
 void PrintUserInfomation(UserInfo& user){
     cout << endl << "*****************************" << endl << endl;
 
@@ -86,6 +88,7 @@ void PrintUserInfomation(UserInfo& user){
     cout << endl << "*****************************" << endl << endl;
 }
 
+//내가 작성한 게시글을 출력하는 함수
 void UserPostings(list<PostingInfo> board, UserInfo& user){
     int count = 0;
     for(auto itr : board){
@@ -103,7 +106,8 @@ void UserPostings(list<PostingInfo> board, UserInfo& user){
     }
 }
 
-void startboard(UserInfo& user, list<PostingInfo>& postingboard){
+//유저 개인화면 실행 함수
+void userboard(UserInfo& user, list<PostingInfo>& postingboard){
     bool exitcheck = false;
     int command;
 
@@ -116,16 +120,16 @@ void startboard(UserInfo& user, list<PostingInfo>& postingboard){
 
         switch (command)
         {
-            //1 입력시 회원가입
+            //1 입력시 아이디, 비밀번호 확인
             case 1:
                 PrintUserInfomation(user);
                 break;
-            //2 입력시 게시글 작성
+            //2 입력시 내가 작성한 게시글들 출력
             case 2:
                 UserPostings(postingboard, user);
                 break;
 
-            //0 입력시 반복문 종료(로그아웃)
+            //0 입력시 게시판 화면으로 이동
             case 0:
                 exitcheck = true;
                 cout << endl << "게시판 화면으로 돌아갑니다" << endl << endl;
@@ -162,9 +166,9 @@ void startboard(UserInfo& user, list<PostingInfo>& postingboard, int& boardsize)
                 getchar();
                 AddPostings(user, postingboard, boardsize);
                 break;
-
+            //3 입력시 개인화면으로 이동
             case 3:
-                startboard(user, postingboard);
+                userboard(user, postingboard);
                 break;
 
             //0 입력시 반복문 종료(로그아웃)
