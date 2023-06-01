@@ -9,6 +9,7 @@ void GuidePrint(){
     cout << "회원가입을 하려면 1을 입력해주세요" << endl;    
     cout << "로그인을 하려면 2를 입력해주세요" << endl;
     cout << "비밀번호를 찾으려면 하려면 3을 입력해주세요" << endl;
+    cout << "비밀번호를 변경하려면 하려면 4를 입력해주세요" << endl;
     cout << "종료하려면 0를 입력해주세요" << endl;
 
     cout << endl << "*************************************************" << endl << endl;
@@ -151,4 +152,45 @@ void SearchPassword(list<UserInfo>& list){
     else
         cout << endl << "해당 계정의 비밀번호는 "  << password << " 입니다 "<< endl;
     
+}
+
+void ChangePassword(list<UserInfo>& userlist){
+    string id, password;
+    bool lettercheck = true;
+
+    UserInfo* user = nullptr;
+    bool usercheck = false;
+
+    cout << endl << "아이디를 입력해주세요" << endl;
+    cin >> id;
+
+    for (auto& itr : userlist) {
+        if (itr.GetUserID() == id) {
+            user = &itr;
+            usercheck = true;
+            break; // 아이디가 일치하는 경우 반복문 종료
+        }
+    }
+
+    if (usercheck == false) {
+        cout << endl << "존재하지 않는 아이디입니다" << endl;
+        return;
+    }
+
+    cout << endl << "변경할 비밀번호를 입력해주세요" << endl;
+    cin >> password;
+
+    for (int i = 0; i < password.length(); i++) {
+        if (isalpha(password[i]) == 0 && isdigit(password[i]) == false)
+            lettercheck = false;
+    }
+
+    if (lettercheck == false) {
+        cout << endl << "비밀번호는 공백없이 숫자나 영어로만 입력되어야 합니다!" << endl;
+        cout << endl << "비밀번호가 변경되지 않았습니다" << endl;
+    }
+    else {
+        user->SetPassword(password);
+        cout << endl << "비밀번호가 변경되었습니다" << endl;
+    }
 }

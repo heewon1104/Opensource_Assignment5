@@ -34,6 +34,10 @@ int main(){
             case 3:
                 SearchPassword(userlist);
                 break;
+
+            case 4:
+                ChangePassword(userlist);
+                break;
             //0 입력시 프로그램 종료
             case 0:
                 exitcheck = true;
