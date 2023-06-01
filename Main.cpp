@@ -1,17 +1,34 @@
-#include <iostream>
-#include "UserInfo.cpp"
+#include "LoginFunction.cpp"
 
-using namespace std;
+int main(){
+    list<UserInfo> userlist;
+    bool exitcheck = false;
+    int command;
 
-int main() {
-    UserInfo User = UserInfo();
+    while (!exitcheck)
+    {   
+        GuidePrint();
 
-    User.SetUserID("julian3306");
-    User.SetPassword("1234");
+        cin >> command;
 
+        switch (command)
+        {
+            case 1:
+                AddUser(userlist);
+                break;
+            case 2:
+                Login(userlist);
+                break;
+            case 3:
+                SearchPassword(userlist);
+                break;
 
-    cout << "ID : " << User.GetUserID() << endl;
-    cout << "Password : " <<User.GetPassword() << endl;
-
-    return 0;
+            case 0:
+                exitcheck = true;
+                cout << endl << "프로그램을 종료합니다" << endl << endl;
+                break;
+            default:
+                break;
+        }
+    }
 }

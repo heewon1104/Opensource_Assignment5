@@ -35,5 +35,4 @@ class UserInfo{
         Password = str;
         return Password;
     }
-
 };
